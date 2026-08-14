@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>Политика обработки данных — Nemchinov Print Lab</title>
+<meta name="description" content="Как сайт nemchinovprintlab.ru обрабатывает данные посетителей.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#101319">
+<meta name="color-scheme" content="dark">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' fill='%23101319'/%3E%3Ccircle cx='48' cy='48' r='31' fill='none' stroke='%239BE7FF' stroke-opacity='.3' stroke-width='2'/%3E%3Cg fill='%23FF6A1F' fill-opacity='.8'%3E%3Ccircle cx='24' cy='24' r='6'/%3E%3Ccircle cx='48' cy='24' r='6'/%3E%3Ccircle cx='72' cy='24' r='6'/%3E%3Ccircle cx='24' cy='48' r='6'/%3E%3Ccircle cx='72' cy='48' r='6'/%3E%3Ccircle cx='24' cy='72' r='6'/%3E%3Ccircle cx='48' cy='72' r='6'/%3E%3Ccircle cx='72' cy='72' r='6'/%3E%3C/g%3E%3Ccircle cx='48' cy='48' r='10' fill='%23FF6A1F'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter+Tight:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bed:#101319;
+  --panel:#161A21;
+  --edge:rgba(255,255,255,.09);
+  --ink:#EEF1F5;
+  --muted:#7C8798;
+  --filament:#FF6A1F;
+  --nozzle:#9BE7FF;
+  --r:14px;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{background:#101319;color-scheme:dark}
+body{
+  min-height:100dvh;
+  background:var(--bed);
+  color:var(--ink);
+  font-family:"Inter Tight",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  display:flex;
+  justify-content:center;
+  padding:clamp(24px,7vw,56px) 20px calc(48px + env(safe-area-inset-bottom));
+  position:relative;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  background-color:#101319;
+  background-image:
+    linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+  background-size:32px 32px, 32px 32px;
+  pointer-events:none;
+  z-index:0;
+}
+main{width:100%;max-width:520px;position:relative;z-index:1}
+
+.back{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  margin-bottom:30px;
+  transition:color .18s ease;
+}
+.back:hover{color:var(--ink)}
+.back svg{width:13px;height:13px}
+
+h1{
+  font-family:"Bricolage Grotesque","Inter Tight",sans-serif;
+  font-weight:800;
+  font-size:clamp(27px,7vw,36px);
+  line-height:1.05;
+  letter-spacing:-.03em;
+  margin:0 0 10px;
+}
+.updated{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.28);
+  margin:0 0 32px;
+}
+
+h2{
+  font-family:"Bricolage Grotesque",sans-serif;
+  font-weight:600;font-size:17px;letter-spacing:-.01em;
+  margin:32px 0 10px;
+}
+p{margin:0 0 12px;font-size:15px;line-height:1.6;color:var(--muted)}
+p b{color:var(--ink);font-weight:500}
+ul{margin:0 0 12px;padding-left:20px}
+li{font-size:15px;line-height:1.6;color:var(--muted);margin-bottom:6px}
+a{color:var(--nozzle);text-decoration:none;border-bottom:1px solid rgba(155,231,255,.3)}
+a:hover{border-bottom-color:var(--nozzle)}
+
+.note{
+  background:var(--panel);
+  border:1px solid var(--edge);
+  border-left:3px solid var(--filament);
+  border-radius:0 var(--r) var(--r) 0;
+  padding:16px 18px;
+  margin:24px 0;
+}
+.note p{margin:0;font-size:14px}
+
+footer{
+  margin-top:40px;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.24);
+  line-height:1.9;
+  border-top:1px solid var(--edge);
+  padding-top:18px;
+}
+</style>
+</head>
+
+<body>
+<main>
+
+  <a class="back" href="/">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M11 3L6 8l5 5"/></svg>
+    На главную
+  </a>
+
+  <h1>Политика обработки данных</h1>
+  <p class="updated">Обновлено 14 августа 2026</p>
+
+  <p>Этот документ описывает, какие данные собирает сайт <b>nemchinovprintlab.ru</b> и зачем.</p>
+
+  <h2>Кто обрабатывает данные</h2>
+  <p>Немчинов Иван, самозанятый (плательщик налога на профессиональный доход). Связаться можно через <a href="https://t.me/nemchinov3d" target="_blank" rel="noopener">Telegram</a>.</p>
+
+  <h2>Какие данные собираются</h2>
+  <p>Сайт не содержит форм и не просит вводить имя, телефон или почту. Собирается только обезличенная статистика посещений:</p>
+  <ul>
+    <li>тип устройства, браузер, операционная система</li>
+    <li>примерный регион по IP-адресу (город, не точный адрес)</li>
+    <li>с какого сайта или ссылки был переход</li>
+    <li>какие ссылки на странице нажимали и сколько времени провели</li>
+  </ul>
+
+  <h2>Кто собирает</h2>
+  <p>Статистику собирает <b>Яндекс.Метрика</b> — сервис ООО «Яндекс». Она использует cookie: небольшие файлы, которые браузер хранит, чтобы отличать нового посетителя от вернувшегося.</p>
+  <p>Условия обработки данных Яндексом описаны в <a href="https://yandex.ru/legal/confidential/" target="_blank" rel="noopener">политике конфиденциальности Яндекса</a>.</p>
+
+  <h2>Зачем это нужно</h2>
+  <p>Чтобы понимать, сколько людей заходит на сайт и какие каналы связи им удобнее — и на основе этого улучшать страницу. Данные не продаются и не передаются третьим лицам, кроме самого сервиса статистики.</p>
+
+  <h2>Как отказаться</h2>
+  <p>Собирать статистику можно запретить самостоятельно, без обращения ко мне:</p>
+  <ul>
+    <li>отключить cookie в настройках браузера</li>
+    <li>включить режим инкогнито</li>
+    <li>установить <a href="https://yandex.ru/support/metrica/general/opt-out.html" target="_blank" rel="noopener">блокировщик Яндекс.Метрики</a></li>
+  </ul>
+  <p>На работу сайта это не повлияет: все ссылки продолжат открываться как обычно.</p>
+
+  <div class="note">
+    <p>Продолжая пользоваться сайтом, вы соглашаетесь со сбором обезличенной статистики, описанной выше.</p>
+  </div>
+
+  <footer>
+    Nemchinov Print Lab<br>
+    nemchinovprintlab.ru
+  </footer>
+
+</main>
+</body>
+</html>

@@ -225,7 +225,43 @@ footer{
   padding-top:18px;
 }
 
-/* ── печать страницы: сборка по слоям ─────────── */
+/* ── уведомление о cookie ─────────────────────── */
+.cookie{
+  position:fixed;left:12px;right:12px;bottom:12px;z-index:9;
+  max-width:416px;margin:0 auto;
+  display:none;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:14px 16px;
+  background:rgba(22,26,33,.96);
+  backdrop-filter:blur(8px);
+  border:1px solid var(--edge);
+  border-radius:var(--r);
+  box-shadow:0 8px 32px rgba(0,0,0,.5);
+  animation:cookieUp .4s cubic-bezier(.22,.85,.25,1);
+}
+.cookie.show{display:flex}
+@keyframes cookieUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.cookie p{
+  margin:0;flex:1;min-width:180px;
+  font-size:12.5px;line-height:1.45;color:var(--muted);
+}
+.cookie a{color:var(--nozzle);text-decoration:none;border-bottom:1px solid rgba(155,231,255,.3)}
+.cookie a:hover{border-bottom-color:var(--nozzle)}
+.cookie button{
+  flex:none;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--filament);
+  background:rgba(255,106,31,.14);
+  border:1px solid rgba(255,106,31,.34);
+  border-radius:9px;
+  padding:9px 16px;
+  cursor:pointer;
+  transition:background .18s ease,border-color .18s ease;
+}
+.cookie button:hover{background:rgba(255,106,31,.22);border-color:rgba(255,106,31,.55)}
+.cookie button:focus-visible{outline:2px solid var(--nozzle);outline-offset:2px}
+
+
 .layer{
   opacity:0;
   animation:build .5s cubic-bezier(.22,.85,.25,1) forwards;
@@ -404,6 +440,24 @@ footer{
   </footer>
 
 </main>
+
+<div class="cookie" id="cookie">
+  <p>Сайт использует cookie и Яндекс.Метрику. <a href="/privacy.html">Подробнее</a></p>
+  <button type="button" id="cookieOk">Понятно</button>
+</div>
+
+<script>
+/* уведомление о cookie: показываем один раз */
+(function(){
+  var box=document.getElementById('cookie');
+  try{ if(localStorage.getItem('npl-cookie')) return; }catch(e){}
+  setTimeout(function(){box.classList.add('show')},1200);
+  document.getElementById('cookieOk').addEventListener('click',function(){
+    box.classList.remove('show');
+    try{ localStorage.setItem('npl-cookie','1'); }catch(e){}
+  });
+})();
+</script>
 
 <script>
 /* клик по карточке → цель в Метрике */
