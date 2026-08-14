@@ -81,7 +81,9 @@ main{width:100%;max-width:440px;position:relative;z-index:1}
 
 /* ── знак: точка → импульс → поле → возврат ──── */
 /* Цикл 6 с. Общая задержка .6 с — знак стартует после сборки страницы. */
-.markspace{height:104px;margin:0 0 18px;display:flex;align-items:center}
+/* ── шапка: знак + заголовок в строку ─────────── */
+.head{display:flex;align-items:center;gap:16px;margin:0 0 12px}
+.markspace{height:104px;width:96px;flex:none;display:flex;align-items:center}
 .mark{display:block;width:96px;height:104px;overflow:visible}
 
 /* узлы разлетаются из центра кольцами: --i = номер кольца */
@@ -125,10 +127,10 @@ main{width:100%;max-width:440px;position:relative;z-index:1}
 h1{
   font-family:"Bricolage Grotesque","Inter Tight",sans-serif;
   font-weight:800;
-  font-size:clamp(38px,10vw,50px);
+  font-size:clamp(27px,7.4vw,40px);
   line-height:.94;
   letter-spacing:-.035em;
-  margin:0 0 12px;
+  margin:0;
 }
 .tagline{
   margin:0 0 34px;
@@ -264,6 +266,8 @@ footer{
     <span>ответ в течение часа</span>
   </div>
 
+  <div class="head">
+
   <!-- знак -->
   <div class="markspace layer" style="--d:.12s" aria-hidden="true">
     <svg class="mark" viewBox="0 0 96 104" fill="none">
@@ -309,6 +313,8 @@ footer{
   </div>
 
   <h1 class="layer" style="--d:.18s">NEMCHINOV<br>PRINT LAB</h1>
+
+  </div>
   <p class="tagline layer" style="--d:.24s">
     <b>Авторские серии и печать на заказ.</b> Придумываю форму, режу модель, веду от идеи до готовой вещи в руках.
   </p>
